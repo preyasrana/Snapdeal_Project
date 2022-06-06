@@ -19,24 +19,40 @@ public class Checkout_Steps {
 	@Then("user has add delivery address")
 	public void user_has_add_delivery_address() throws InterruptedException {
 
-		checkoutpg.enter_pincode(checkoutpg.configreader.init_prop().getProperty("zip_code"));
-		checkoutpg.enter_fullname();
-		checkoutpg.enter_address();
-		checkoutpg.enter_landmark();
+		if (checkoutpg.change_deliveryaddress()) {
+			
+			checkoutpg.click_changeaddress();
+			checkoutpg.btn_addnew_address();
+			checkoutpg.enter_pincode(checkoutpg.configreader.init_prop().getProperty("zip_code"));
+			checkoutpg.enter_fullname();
+			checkoutpg.enter_address();
+			checkoutpg.enter_landmark();
 
-		checkoutpg.enter_mobno(checkoutpg.configreader.init_prop().getProperty("mob_no"));
-		checkoutpg.enter_altmobno(checkoutpg.configreader.init_prop().getProperty("mob_no"));
-		checkoutpg.rdo_address_type();
+			checkoutpg.enter_mobno(checkoutpg.configreader.init_prop().getProperty("mob_no"));
+			checkoutpg.enter_altmobno(checkoutpg.configreader.init_prop().getProperty("mob_no"));
+			checkoutpg.rdo_address_type();
 
-		checkoutpg.btn_save_continue();
+			checkoutpg.btn_save_continue();
+		}else {
+			
+			checkoutpg.enter_pincode(checkoutpg.configreader.init_prop().getProperty("zip_code"));
+			checkoutpg.enter_fullname();
+			checkoutpg.enter_address();
+			checkoutpg.enter_landmark();
+
+			checkoutpg.enter_mobno(checkoutpg.configreader.init_prop().getProperty("mob_no"));
+			checkoutpg.enter_altmobno(checkoutpg.configreader.init_prop().getProperty("mob_no"));
+			checkoutpg.rdo_address_type();
+
+			checkoutpg.btn_save_continue();
+			
+		}
 
 	}
 
 	@Then("user has review order")
 	public void user_has_review_order() throws InterruptedException, ParseException {
 
-		
-		
 		// Verify Order Total Prices
 		Assert.assertEquals(checkoutpg.Verify_Review_product_prices(), checkoutpg.review_totalpayprice());
 
@@ -49,9 +65,8 @@ public class Checkout_Steps {
 	public void user_has_make_payment_as_COD() throws InterruptedException {
 
 		checkoutpg.lnk_cashon_delivery();
-		//checkoutpg.btn_paycashon_delivery();
+		// checkoutpg.btn_paycashon_delivery();
 
 	}
-	
 
 }

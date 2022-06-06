@@ -10,19 +10,19 @@ Feature: Feature to Snapdeal HomePage functionality
     Then user can click on product
     Then user switch on new window
     Then user add to cart product
-    Then user switch back to parent window
-    When user has enter "<Search_product_2>" in search box
-    Then user has click on search button
-    Then user can click on product
-    Then user switch on new window
-    Then user add to cart product
-    Then user switch back to parent window
-    When user has enter "<Search_product_3>" in search box
-    Then user has click on search button
-    Then user can click on product
-    Then user switch on new window
-    Then user add to cart product
-    Then user click on View cart
+    #Then user switch back to parent window
+    #When user has enter "<Search_product_2>" in search box
+    #Then user has click on search button
+    #Then user can click on product
+    #Then user switch on new window
+    #Then user add to cart product
+    #Then user switch back to parent window
+    #When user has enter "<Search_product_3>" in search box
+    #Then user has click on search button
+    #Then user can click on product
+    #Then user switch on new window
+    #Then user add to cart product
+    #Then user click on View cart
     Then user click on proceed to checkout
     Then user click on login via gmail option
     Then user login via gmail
@@ -40,5 +40,8 @@ Feature: Feature to Snapdeal HomePage functionality
   Scenario: Verification for Snapdeal order Email Functionality
       Given user login through gmail 
       When gmail through login and verify email
+      
+      
+      
        
      

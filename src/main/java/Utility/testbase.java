@@ -10,7 +10,9 @@ import org.openqa.selenium.WebElement;
 
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.github.javafaker.Faker;
@@ -41,6 +43,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.WebDriver;
 
 public class testbase extends DriverFactory {
 
@@ -49,8 +52,8 @@ public class testbase extends DriverFactory {
 	public Properties prop = new Properties();
 	public ConfigReader configreader = new ConfigReader();
 
-	public static long PAGE_LOAD_TIMEOUT = 45;
-	public static long IMPLICIT_WAIT = 30;
+	public static long PAGE_LOAD_TIMEOUT = 20;
+	public static long IMPLICIT_WAIT = 20;
 
 	public Faker faker = new Faker();
 
@@ -58,6 +61,14 @@ public class testbase extends DriverFactory {
 	public void waitForWebElementIsClickable(WebElement webElement, int time) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(time));
 		wait.until(ExpectedConditions.elementToBeClickable(webElement));
+
+	}
+	
+	public void fluentwait() {
+		
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+			    .withTimeout(Duration.ofSeconds(60))
+			    .pollingEvery(Duration.ofSeconds(5));
 	}
 
 	// waitForWebElementIsVisible
@@ -72,16 +83,31 @@ public class testbase extends DriverFactory {
 
 	}
 
-	// isdisplay
-	public boolean isdisplay(WebElement element) {
-		boolean value = false;
-		waitForWebElementIsVisible(element, 60);
+	public boolean ElementIsVisible(WebElement webElement, int time) {
+
 		try {
-			value = element.isDisplayed();
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(time));
+			wait.until(ExpectedConditions.visibilityOf(webElement));
+			return true;
 		} catch (Exception e) {
 			e.getStackTrace();
+			return false;
 		}
-		return value;
+
+	}
+
+	// isdisplay
+	public boolean isdisplay(WebElement element) {
+
+		ElementIsVisible(element, 20);
+		try {
+			element.isDisplayed();
+			return true;
+		} catch (Exception e) {
+			e.getStackTrace();
+			return false;
+		}
+
 	}
 
 	// Faker Lib
@@ -157,7 +183,7 @@ public class testbase extends DriverFactory {
 	public boolean isElementPresent(WebElement element) {
 		try {
 
-			waitForWebElementIsVisible(element, 30);
+			waitForWebElementIsVisible(element, 20);
 			if (element.isDisplayed())
 				System.out.println("Element presend on screen ***********" + element);
 			return true;
@@ -169,22 +195,20 @@ public class testbase extends DriverFactory {
 
 	// isClickable
 	public boolean isClickable(WebElement element) {
-		boolean value = false;
-		isElementPresent(element);
-		waitForWebElementIsClickable(element, 30);
+
+		ElementIsVisible(element, 30);
 
 		try {
+			// JavascriptExecutor executor = (JavascriptExecutor) driver;
+			// executor.executeScript("arguments[0].click();", element);
+			element.click();
+			return true;
 
-			if (element.isDisplayed() && element.isEnabled()) {
-
-				JavascriptExecutor executor = (JavascriptExecutor) driver;
-				executor.executeScript("arguments[0].click();", element);
-				//element.click();
-			}
 		} catch (Exception e) {
 			e.getStackTrace();
+			return false;
 		}
-		return value;
+
 	}
 
 	public static void doubleClick(WebElement webElement) {
@@ -193,22 +217,21 @@ public class testbase extends DriverFactory {
 	}
 
 	public boolean isClickable_javascript(WebElement element) {
-		boolean value = false;
 
 		System.out.println(driver);
-		waitForWebElementIsClickable(element, 60);
+		ElementIsVisible(element, 30);
 
 		try {
 
-			if (element.isDisplayed() && element.isEnabled()) {
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", element);
+			return true;
 
-				JavascriptExecutor executor = (JavascriptExecutor) driver;
-				executor.executeScript("arguments[0].click();", element);
-			}
 		} catch (Exception e) {
 			e.getStackTrace();
+			return false;
 		}
-		return value;
+
 	}
 
 	public boolean isFileDownloaded(String downloadPath, String fileName) {
@@ -259,7 +282,6 @@ public class testbase extends DriverFactory {
 
 	// switchToLatestWindow
 	String parentWindow;
-	
 
 	public void switchToLatestWindow() throws InterruptedException {
 
@@ -274,6 +296,7 @@ public class testbase extends DriverFactory {
 	}
 
 	String childwindow;
+
 	public void switchTo_multiWindow() throws InterruptedException {
 
 		Set<String> all_Windows = driver.getWindowHandles();
@@ -285,11 +308,11 @@ public class testbase extends DriverFactory {
 		System.out.println("Child 1 Window ID is : " + child1_window);
 
 		for (String child_2 : all_Windows)
-			if (!parentWindow.equals(child_2) && !child1_window.equals(child_2))
+			if (!parentWindow.equals(child_2) || !child1_window.equals(child_2))
 				driver.switchTo().window(child_2);
-		
+
 		String child2_window = driver.getWindowHandle();
-		System.out.println("Child 2 Window ID is : "+child2_window);
+		System.out.println("Child 2 Window ID is : " + child2_window);
 	}
 
 	public void switchToPartentWindow() {

@@ -4,7 +4,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import Utility.testbase;
-
 import static org.testng.Assert.assertEquals;
 import java.util.List;
 
@@ -73,15 +72,36 @@ public class Checkout_page extends testbase {
 
 	@FindBy(xpath = "//div[@id='make-payment-button']")
 	WebElement btn_Pay_cash_on_delivery;
-	
+
 	@FindBy(xpath = "//div[@id='checkout-reviews']//div[@class='reviews-wrapper']")
 	WebElement lbl_checkout_revieworder;
-	
+
+	@FindBy(xpath = "//div[@id='address-details']//span[contains(text(),'Change')]")
+	WebElement lnk_Change_Deliveryaddress;
+
+	@FindBy(xpath = "//div[@class='add-address no-display']//button[contains(text(),'ADD NEW ADDRESS')]")
+	WebElement btn_add_new_address;
 
 	public Checkout_page() {
 
 		PageFactory.initElements(driver, this);
 
+	}
+
+	public boolean change_deliveryaddress() {
+
+		return ElementIsVisible(lnk_Change_Deliveryaddress, 10);
+
+	}
+
+	public boolean click_changeaddress() {
+
+		return isClickable(lnk_Change_Deliveryaddress);
+	}
+
+	public boolean btn_addnew_address() {
+
+		return isClickable(btn_add_new_address);
 	}
 
 	public String cartitems_total() {
@@ -134,21 +154,21 @@ public class Checkout_page extends testbase {
 
 	public double Verify_Review_product_prices() throws InterruptedException {
 
-        waitForWebElementIsVisible(lbl_checkout_revieworder, 30);
-		
+		waitForWebElementIsVisible(lbl_checkout_revieworder, 30);
+
 		int Product_pricesize = list_checkout_productprice.size();
 		System.out.println("list_checkout_productprice -->" + Product_pricesize);
 		double total_pricesum = 0;
 
 		for (WebElement productprice : list_checkout_productprice) {
 
-			//System.out.println(productprice.getText().replaceAll("[Rs. ,]", ""));
+			// System.out.println(productprice.getText().replaceAll("[Rs. ,]", ""));
 
 			double getprice = Double.parseDouble(productprice.getText().replaceAll("[Rs. ,]", ""));
 			total_pricesum = total_pricesum + getprice;
 
 		}
-		//System.out.println(total_pricesum);
+		// System.out.println(total_pricesum);
 		return total_pricesum;
 
 	}
@@ -188,7 +208,7 @@ public class Checkout_page extends testbase {
 
 	public double review_totalpayprice() {
 
-		 waitForWebElementIsVisible(lbl_checkout_revieworder, 30);
+		waitForWebElementIsVisible(lbl_checkout_revieworder, 30);
 		String review_strtotalpay = get_review_totalpay.getText().replaceAll("[Rs. ,]", "");
 		double review_dbtotalprice = Double.parseDouble(review_strtotalpay);
 		System.out.println(review_dbtotalprice);

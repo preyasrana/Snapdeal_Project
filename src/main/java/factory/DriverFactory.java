@@ -8,14 +8,15 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.asserts.IAssert;
-
+import java.time.Duration;
 import Utility.testbase;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class DriverFactory {
 
 	public static WebDriver driver;
-
+	
+	@SuppressWarnings("deprecation")
 	public WebDriver init_driver(String browserName) {
 		
 		if (browserName.equals("chrome")) {
@@ -38,7 +39,9 @@ public class DriverFactory {
 			firefoxOptions.addArguments("--headless");			
 			driver = new FirefoxDriver(firefoxOptions);
 		}
-			    
+		
+		driver.manage().timeouts().pageLoadTimeout(testbase.PAGE_LOAD_TIMEOUT,TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(testbase.IMPLICIT_WAIT,TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
 		return driver;
