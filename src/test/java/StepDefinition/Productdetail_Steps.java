@@ -21,12 +21,7 @@ public class Productdetail_Steps {
 	public void user_add_to_cart_product() throws InterruptedException {
 
 		productdetail.btn_click_addtocart();
-		
+
 	}
-	
-
-
-	
-	 
 
 }

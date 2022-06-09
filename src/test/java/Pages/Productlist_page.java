@@ -17,7 +17,7 @@ public class Productlist_page extends testbase {
 	@FindBy(xpath = "//div[@id='products']//div[@class='product-tuple-image ']//a")
 	List<WebElement> list_product;
 
-	@FindBy(xpath = "//div[@id='products']//div[@class='product-tuple-description ']//a//p")
+	@FindBy(xpath = "//div[@id='products']//div[@class='product-tuple-description ']//a/p")
 	List<WebElement> list_product_name;
 
 	// Sorting Product option
@@ -30,10 +30,12 @@ public class Productlist_page extends testbase {
 
 	@FindBy(xpath = "//div[@class='sorting-sec animBounce']//ul//li")
 	List<WebElement> list_Sortoption;
-		
+
 	@FindBy(xpath = "//div[@class='sorting-sec animBounce']//div[@class='sort-selected']")
 	WebElement get_sort_by_productname;
-	
+
+	@FindBy(xpath = "//div[@id='products']//section")
+	WebElement product_section;
 
 	List<String> listproduct;
 
@@ -43,12 +45,18 @@ public class Productlist_page extends testbase {
 
 	}
 
+	public void getlist_allProduct() throws InterruptedException {
+
+		
+
+	}
+
 	public void Sorting_Productlist() throws InterruptedException {
 
 		getMultipleTextwithclick(list_Sortoption, "Price Low To High");
-		
+
 	}
-	
+
 	public String gettext_Sortby() {
 		return getText(get_sort_by_productname);
 	}
@@ -57,13 +65,12 @@ public class Productlist_page extends testbase {
 		isClickable_javascript(drp_sort_by_product_arrow);
 	}
 
-
 	public void product_list() throws InterruptedException {
 
 		int Productsize = list_product.size();
 		System.out.println("Productsize -->" + Productsize);
 
-		//fluentwait();
+		// fluentwait();
 		Thread.sleep(5000);
 		if (list_product.size() != 0) {
 			for (int i = 0; i < Productsize; i++) {

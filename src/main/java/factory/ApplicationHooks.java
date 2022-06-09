@@ -1,5 +1,6 @@
 package factory;
 
+import java.net.SocketException;
 import java.util.Properties;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -11,7 +12,7 @@ import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
-import org.testng.asserts.IAssert; 
+import org.testng.asserts.IAssert;
 
 public class ApplicationHooks {
 
@@ -19,7 +20,6 @@ public class ApplicationHooks {
 	private static WebDriver driver;
 	private ConfigReader configReader;
 	Properties prop;
-	
 
 	@Before()
 	public void launchBrowser() {
@@ -61,9 +61,5 @@ public class ApplicationHooks {
 			}
 		}
 	}
-	
-	
-
-
 
 }

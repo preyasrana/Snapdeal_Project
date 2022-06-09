@@ -1,7 +1,12 @@
 package Pages;
 
+import org.apache.commons.collections4.bag.SynchronizedSortedBag;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
 import Utility.testbase;
 import static org.testng.Assert.assertEquals;
@@ -82,6 +87,15 @@ public class Checkout_page extends testbase {
 	@FindBy(xpath = "//div[@class='add-address no-display']//button[contains(text(),'ADD NEW ADDRESS')]")
 	WebElement btn_add_new_address;
 
+	// Review Module
+	@FindBy(xpath = "//div[@class='review-cart-items clearfix']//div[@class='styledSelect sd-icon-expand-arrow customized']")
+	List<WebElement> get_review_product_qty;
+	
+	
+
+
+	
+
 	public Checkout_page() {
 
 		PageFactory.initElements(driver, this);
@@ -90,7 +104,7 @@ public class Checkout_page extends testbase {
 
 	public boolean change_deliveryaddress() {
 
-		return ElementIsVisible(lnk_Change_Deliveryaddress, 10);
+		return ElementIsVisible(lnk_Change_Deliveryaddress, 05);
 
 	}
 
@@ -170,6 +184,31 @@ public class Checkout_page extends testbase {
 		}
 		// System.out.println(total_pricesum);
 		return total_pricesum;
+
+	}
+
+	public void qtyselect() throws InterruptedException {
+
+		int review_Product_items = get_review_product_qty.size();
+		System.out.println("list_review Product items -->" + review_Product_items);
+
+		
+		for (int i = 0; i < review_Product_items; i++) {
+
+			String id = get_review_product_qty.get(i).getAttribute("id");
+			System.out.print("is value is --->" + id);
+			WebElement ele = get_review_product_qty.get(i);
+			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoViewIfNeeded();", ele);
+			Thread.sleep(3000);
+			ele.click();
+			
+			WebElement ele1 = createWebElement("//ul[@class='options'][@data-cs='"+id+"']/li[1]", 20);
+			
+			ele1.click();
+
+			Thread.sleep(3000);
+
+		}
 
 	}
 

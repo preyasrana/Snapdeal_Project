@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="99.595">
+<testcase classname="Feature to Snapdeal HomePage functionality" name="Verification for Snapdeal order funcationality" time="99.415">
+<system-out><![CDATA[Given user is on Home Page and verify page title............................passed
+When user click on search box...............................................passed
+When user has enter "sony sound speaker" in search box......................passed
+Then user has click on search button........................................passed
+Then user can click on product..............................................passed
+Then user switch on new window..............................................passed
+Then user add to cart product...............................................passed
+Then user click on proceed to checkout......................................passed
+Then user click on login via gmail option...................................passed
+Then user login via gmail...................................................passed
+Then user has add delivery address..........................................passed
+Then user has review order..................................................passed
+Then user has make payment as COD...........................................passed
+]]></system-out>
+</testcase>
+</testsuite>

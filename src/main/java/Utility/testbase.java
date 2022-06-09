@@ -63,12 +63,11 @@ public class testbase extends DriverFactory {
 		wait.until(ExpectedConditions.elementToBeClickable(webElement));
 
 	}
-	
+
 	public void fluentwait() {
-		
-		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
-			    .withTimeout(Duration.ofSeconds(60))
-			    .pollingEvery(Duration.ofSeconds(5));
+
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(60))
+				.pollingEvery(Duration.ofSeconds(5));
 	}
 
 	// waitForWebElementIsVisible
@@ -94,6 +93,18 @@ public class testbase extends DriverFactory {
 			return false;
 		}
 
+	}
+	
+	public static WebElement createWebElement(String elementText , int time) {
+	    WebElement element = null;
+	    try {
+	    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(time));
+	        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(elementText)));
+	        element = driver.findElement(By.xpath(elementText));
+	    } catch (Exception e) {
+	        System.out.println("Exception occurred: " + e);
+	    }
+	    return element;
 	}
 
 	// isdisplay
@@ -201,6 +212,9 @@ public class testbase extends DriverFactory {
 		try {
 			// JavascriptExecutor executor = (JavascriptExecutor) driver;
 			// executor.executeScript("arguments[0].click();", element);
+			
+			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoViewIfNeeded();", element);
+			Thread.sleep(3000);
 			element.click();
 			return true;
 
@@ -569,6 +583,7 @@ public class testbase extends DriverFactory {
 			for (WebElement webElement : webElements) {
 
 				values.add(webElement.getText());
+				
 			}
 
 		} catch (Exception e) {
@@ -756,6 +771,11 @@ public class testbase extends DriverFactory {
 
 	public static void scrollToElement(WebElement element) {
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+	}
+	
+	public void scroll_page(float to, float from) {
+		JavascriptExecutor jse6 = (JavascriptExecutor) driver;
+		jse6.executeScript("window.scrollBy("+to+","+from+")", "");
 	}
 
 	public void locateElement(List<WebElement> elementLocator) throws InterruptedException {

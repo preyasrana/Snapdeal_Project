@@ -29,19 +29,25 @@ Feature: Feature to Snapdeal HomePage functionality
     Then user has add delivery address
     Then user has review order
     Then user has make payment as COD
+    #Then user driver close
 
     Examples: 
       | Search_product_1 | Search_product_2   | Search_product_3 |
       | pin              | sony sound speaker | laptop bag       |
-      
-      
-      
+
   @smokenew
   Scenario: Verification for Snapdeal order Email Functionality
-      Given user login through gmail 
-      When gmail through login and verify email
-      
-      
-      
-       
-     
+    Given user login through gmail
+    When gmail through login and verify email
+
+  @smokenew
+  Scenario Outline: Verification for Snapdeal order funcationality
+    Given user is on Home Page and verify page title
+    When user click on search box
+    When user has enter "<Search_product_1>" in search box
+    Then user has click on search button
+    Then user gets list of product
+    
+    Examples: 
+      | Search_product_1 |
+      | pin              | 

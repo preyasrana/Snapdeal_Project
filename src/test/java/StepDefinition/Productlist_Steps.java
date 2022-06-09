@@ -28,6 +28,21 @@ public class Productlist_Steps {
 		productdata.product_list();
 
 	}
+	
+	@Then("user gets list of product")
+	public void user_gets_list_of_product() throws InterruptedException {
+
+		productdata.click_on_sorting_by();
+		productdata.Sorting_Productlist();
+		Assert.assertEquals(productdata.gettext_Sortby(), "Price Low To High");
+		
+		
+		
+		
+		
+		
+		
+	}
 
 	@Then("user click on product")
 	public void user_click_on_product() throws InterruptedException {

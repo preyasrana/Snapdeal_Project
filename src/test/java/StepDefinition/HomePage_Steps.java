@@ -30,6 +30,8 @@ public class HomePage_Steps {
 		Assert.assertEquals(Expected_Message, Actual_message);
 
 	}
+	
+	
 
 	@When("user click on search box")
 	public void user_click_on_search_box() throws InterruptedException {
@@ -54,5 +56,14 @@ public class HomePage_Steps {
 		homepage.clickon_search();
 
 	}
+	
+	@Then("user driver close")
+	public void user_driver_close() {
+
+		homepage.driver.close();
+		//homepage.driver.quit();
+
+	}
+
 
 }
