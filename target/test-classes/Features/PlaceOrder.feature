@@ -1,7 +1,7 @@
 @feature
 Feature: Feature to Snapdeal HomePage functionality
 
-  @smoke
+  @smoke123
   Scenario Outline: Verification for Snapdeal order funcationality
     Given user is on Home Page and verify page title
     When user click on search box
@@ -35,12 +35,12 @@ Feature: Feature to Snapdeal HomePage functionality
       | Search_product_1 | Search_product_2   | Search_product_3 |
       | pin              | sony sound speaker | laptop bag       |
 
-  @smokenew
+  @smokenew123
   Scenario: Verification for Snapdeal order Email Functionality
     Given user login through gmail
     When gmail through login and verify email
 
-  @smokenew
+  @smoke
   Scenario Outline: Verification for Snapdeal order funcationality
     Given user is on Home Page and verify page title
     When user click on search box

@@ -36,7 +36,7 @@ public class Productlist_Steps {
 		productdata.Sorting_Productlist();
 		Assert.assertEquals(productdata.gettext_Sortby(), "Price Low To High");
 		
-		
+		productdata.getlist_allProduct();
 		
 		
 		

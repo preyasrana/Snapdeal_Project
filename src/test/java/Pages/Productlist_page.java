@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.time.Duration;
 import org.apache.commons.collections4.bag.SynchronizedSortedBag;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -19,6 +20,12 @@ public class Productlist_page extends testbase {
 
 	@FindBy(xpath = "//div[@id='products']//div[@class='product-tuple-description ']//a/p")
 	List<WebElement> list_product_name;
+
+	@FindBy(xpath = "//div[@id='see-more-products']")
+	WebElement see_more_product;
+
+	@FindBy(xpath = "//div[@class='sd-loader-see-more']")
+	WebElement see_more_product_loader;
 
 	// Sorting Product option
 
@@ -47,7 +54,57 @@ public class Productlist_page extends testbase {
 
 	public void getlist_allProduct() throws InterruptedException {
 
-		
+		int listCount = 0;
+
+		int maxcount = 1000;
+		int firstPageSize = list_product.size();
+
+		while (maxcount > listCount) {
+
+			int Productitems = list_product.size();
+
+			
+			if (Productitems > maxcount) {
+				maxcount = Productitems + firstPageSize; // 20 is scroll size + 1s
+			}
+
+			System.out.println("ListCount ==>" + listCount);
+			System.out.println("Productsize ==>" + Productitems);
+			System.out.println("MaxCount ==>" + maxcount);
+
+			if (list_product.size() != 0) {
+
+				String size = list_product.get(listCount).toString();
+				// String productname = list_product_name.get(listCount).getText().toString();
+				// System.out.println(productname);
+				if (listCount == list_product.size() - 2) {
+					((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoViewIfNeeded();",
+							list_product.get(listCount));
+					Thread.sleep(7000);
+					
+					ElementIs_inVisible(list_product.get(listCount), 20);
+
+					System.out.println("==> Updated list_product size: " + list_product.size());
+				}
+
+				if (listCount == Productitems - 1) {
+
+					Thread.sleep(2000);
+					if (isdisplay(see_more_product)) {
+						isClickable(see_more_product);
+						Thread.sleep(4000);
+						
+						ElementIs_inVisible(list_product.get(listCount), 20);
+						// break;
+					} else {
+						break;
+					}
+				}
+
+				listCount++;
+			}
+
+		}
 
 	}
 

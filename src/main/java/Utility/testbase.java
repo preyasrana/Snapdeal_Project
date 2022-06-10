@@ -92,6 +92,18 @@ public class testbase extends DriverFactory {
 			e.getStackTrace();
 			return false;
 		}
+	}
+	
+	public boolean ElementIs_inVisible(WebElement webElement, int time) {
+
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(time));
+			wait.until(ExpectedConditions.invisibilityOf(webElement));
+			return true;
+		} catch (Exception e) {
+			e.getStackTrace();
+			return false;
+		}
 
 	}
 	
