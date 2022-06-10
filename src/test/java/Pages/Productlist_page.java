@@ -82,7 +82,7 @@ public class Productlist_page extends testbase {
 							list_product.get(listCount));
 					Thread.sleep(7000);
 					
-					ElementIs_inVisible(list_product.get(listCount), 20);
+					ElementIs_inVisible(list_product.get(listCount), 10);
 
 					System.out.println("==> Updated list_product size: " + list_product.size());
 				}
@@ -94,7 +94,7 @@ public class Productlist_page extends testbase {
 						isClickable(see_more_product);
 						Thread.sleep(4000);
 						
-						ElementIs_inVisible(list_product.get(listCount), 20);
+						ElementIs_inVisible(list_product.get(listCount), 10);
 						// break;
 					} else {
 						break;

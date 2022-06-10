@@ -2,30 +2,30 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="2210770" started-at="2022-06-10T15:12:07 IST" finished-at="2022-06-10T15:48:58 IST">
+  <suite name="Default suite" duration-ms="13927" started-at="2022-06-10T18:42:32 IST" finished-at="2022-06-10T18:42:46 IST">
     <groups>
       <group name="cucumber">
-        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runners.Snapdeal_TestRunner@45afc369]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runners.Snapdeal_TestRunner@69a10787]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test name="Default test" duration-ms="2210770" started-at="2022-06-10T15:12:07 IST" finished-at="2022-06-10T15:48:58 IST">
+    <test name="Default test" duration-ms="13927" started-at="2022-06-10T18:42:32 IST" finished-at="2022-06-10T18:42:46 IST">
       <class name="Runners.Snapdeal_TestRunner">
-        <test-method status="PASS" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:Runners.Snapdeal_TestRunner@45afc369]" name="setUpClass" is-config="true" duration-ms="537" started-at="2022-06-10T15:12:07 IST" finished-at="2022-06-10T15:12:08 IST">
+        <test-method status="PASS" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:Runners.Snapdeal_TestRunner@69a10787]" name="setUpClass" is-config="true" duration-ms="564" started-at="2022-06-10T18:42:32 IST" finished-at="2022-06-10T18:42:33 IST">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@17403c0c]]>
+                <![CDATA[org.testng.TestRunner@69afa141]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method status="PASS" signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runners.Snapdeal_TestRunner@45afc369]" name="runScenario" duration-ms="2210085" started-at="2022-06-10T15:12:08 IST" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2022-06-10T15:48:58 IST">
+        <test-method status="PASS" signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runners.Snapdeal_TestRunner@69a10787]" name="runScenario" duration-ms="13187" started-at="2022-06-10T18:42:33 IST" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2022-06-10T18:42:46 IST">
           <params>
             <param index="0">
               <value>
-                <![CDATA["Verification for Snapdeal order funcationality"]]>
+                <![CDATA["Verification for Snapdeal barcode"]]>
               </value>
             </param>
             <param index="1">
@@ -37,7 +37,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:Runners.Snapdeal_TestRunner@45afc369]" name="tearDownClass" is-config="true" duration-ms="108" started-at="2022-06-10T15:48:58 IST" finished-at="2022-06-10T15:48:58 IST">
+        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:Runners.Snapdeal_TestRunner@69a10787]" name="tearDownClass" is-config="true" duration-ms="143" started-at="2022-06-10T18:42:46 IST" finished-at="2022-06-10T18:42:46 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->

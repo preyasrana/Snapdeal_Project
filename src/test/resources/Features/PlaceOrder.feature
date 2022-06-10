@@ -40,7 +40,7 @@ Feature: Feature to Snapdeal HomePage functionality
     Given user login through gmail
     When gmail through login and verify email
 
-  @smoke
+  @smoke123
   Scenario Outline: Verification for Snapdeal order funcationality
     Given user is on Home Page and verify page title
     When user click on search box
@@ -51,3 +51,14 @@ Feature: Feature to Snapdeal HomePage functionality
     Examples: 
       | Search_product_1 |
       | pin              | 
+      
+  @smoke
+  Scenario Outline: Verification for Snapdeal barcode
+    Given user is on Home Page and verify page title
+    When user verify snapdeal barcode
+        
+      
+      
+      
+      
+      

@@ -17,6 +17,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.github.javafaker.Faker;
 
+import java.io.IOException;
+import java.net.URL;
+
 import org.testng.asserts.*;
 
 import factory.DriverFactory;
@@ -44,6 +47,15 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
+import javax.imageio.ImageIO;
+import com.google.zxing.BinaryBitmap;
+import com.google.zxing.LuminanceSource;
+import java.awt.image.BufferedImage;
+import com.google.zxing.MultiFormatReader;
+import com.google.zxing.NotFoundException;
+import com.google.zxing.Result;
+import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
+import com.google.zxing.common.HybridBinarizer;
 
 public class testbase extends DriverFactory {
 
@@ -54,6 +66,7 @@ public class testbase extends DriverFactory {
 
 	public static long PAGE_LOAD_TIMEOUT = 20;
 	public static long IMPLICIT_WAIT = 20;
+	protected static Character ch = '"';
 
 	public Faker faker = new Faker();
 
@@ -62,6 +75,27 @@ public class testbase extends DriverFactory {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(time));
 		wait.until(ExpectedConditions.elementToBeClickable(webElement));
 
+	}
+	
+	public static String QRcode(String qrurl) throws NotFoundException, IOException {
+		
+		URL url=new URL(qrurl);
+		//Pass the URL class object to store the file as image
+		BufferedImage bufferedimage=ImageIO.read(url);
+		// Process the image
+		LuminanceSource luminanceSource=new BufferedImageLuminanceSource(bufferedimage);
+		BinaryBitmap binaryBitmap=new BinaryBitmap(new HybridBinarizer(luminanceSource));
+		//To Capture details of QR code
+		com.google.zxing.Result result =new MultiFormatReader().decode(binaryBitmap);
+		System.out.println(result.getText());
+		
+		return result.getText();
+	}
+	
+	public static String getStringBetween(String input, Character ch) {
+		int firstIndex = input.indexOf(ch) + 1;
+		int lastIndex = input.lastIndexOf(ch);
+		return input.substring(firstIndex,lastIndex);
 	}
 
 	public void fluentwait() {
@@ -203,11 +237,13 @@ public class testbase extends DriverFactory {
 	}
 
 	// isElementPresent
-	public boolean isElementPresent(WebElement element) {
+	public boolean isElementPresent(WebElement element) throws InterruptedException {
 		try {
 
 			waitForWebElementIsVisible(element, 20);
 			if (element.isDisplayed())
+				((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoViewIfNeeded();", element);
+			    Thread.sleep(3000);
 				System.out.println("Element presend on screen ***********" + element);
 			return true;
 		} catch (NoSuchElementException e) {
@@ -223,8 +259,7 @@ public class testbase extends DriverFactory {
 
 		try {
 			// JavascriptExecutor executor = (JavascriptExecutor) driver;
-			// executor.executeScript("arguments[0].click();", element);
-			
+			// executor.executeScript("arguments[0].click();", element);			
 			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoViewIfNeeded();", element);
 			Thread.sleep(3000);
 			element.click();
