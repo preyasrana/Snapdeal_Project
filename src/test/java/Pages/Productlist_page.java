@@ -54,6 +54,8 @@ public class Productlist_page extends testbase {
 
 	public void getlist_allProduct() throws InterruptedException {
 
+		
+	
 		int listCount = 0;
 
 		int maxcount = 1000;
@@ -63,7 +65,6 @@ public class Productlist_page extends testbase {
 
 			int Productitems = list_product.size();
 
-			
 			if (Productitems > maxcount) {
 				maxcount = Productitems + firstPageSize; // 20 is scroll size + 1s
 			}
@@ -81,7 +82,7 @@ public class Productlist_page extends testbase {
 					((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoViewIfNeeded();",
 							list_product.get(listCount));
 					Thread.sleep(7000);
-					
+
 					ElementIs_inVisible(list_product.get(listCount), 10);
 
 					System.out.println("==> Updated list_product size: " + list_product.size());
@@ -93,9 +94,7 @@ public class Productlist_page extends testbase {
 					if (isdisplay(see_more_product)) {
 						isClickable(see_more_product);
 						Thread.sleep(4000);
-						
 						ElementIs_inVisible(list_product.get(listCount), 10);
-						// break;
 					} else {
 						break;
 					}
@@ -105,7 +104,7 @@ public class Productlist_page extends testbase {
 			}
 
 		}
-
+	
 	}
 
 	public void Sorting_Productlist() throws InterruptedException {
