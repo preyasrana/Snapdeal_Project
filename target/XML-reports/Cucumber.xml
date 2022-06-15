@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="13.328">
-<testcase classname="Feature to Snapdeal HomePage functionality" name="Verification for Snapdeal barcode" time="13.096">
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="13.333">
+<testcase classname="Feature to Snapdeal HomePage functionality" name="Verification for Snapdeal barcode" time="13.159">
 <system-out><![CDATA[Given user is on Home Page and verify page title............................passed
 When user verify snapdeal barcode...........................................passed
 ]]></system-out>

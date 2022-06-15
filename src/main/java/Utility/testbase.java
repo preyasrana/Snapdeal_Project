@@ -76,26 +76,26 @@ public class testbase extends DriverFactory {
 		wait.until(ExpectedConditions.elementToBeClickable(webElement));
 
 	}
-	
+
 	public static String QRcode(String qrurl) throws NotFoundException, IOException {
-		
-		URL url=new URL(qrurl);
-		//Pass the URL class object to store the file as image
-		BufferedImage bufferedimage=ImageIO.read(url);
+
+		URL url = new URL(qrurl);
+		// Pass the URL class object to store the file as image
+		BufferedImage bufferedimage = ImageIO.read(url);
 		// Process the image
-		LuminanceSource luminanceSource=new BufferedImageLuminanceSource(bufferedimage);
-		BinaryBitmap binaryBitmap=new BinaryBitmap(new HybridBinarizer(luminanceSource));
-		//To Capture details of QR code
-		com.google.zxing.Result result =new MultiFormatReader().decode(binaryBitmap);
+		LuminanceSource luminanceSource = new BufferedImageLuminanceSource(bufferedimage);
+		BinaryBitmap binaryBitmap = new BinaryBitmap(new HybridBinarizer(luminanceSource));
+		// To Capture details of QR code
+		com.google.zxing.Result result = new MultiFormatReader().decode(binaryBitmap);
 		System.out.println(result.getText());
-		
+
 		return result.getText();
 	}
-	
+
 	public static String getStringBetween(String input, Character ch) {
 		int firstIndex = input.indexOf(ch) + 1;
 		int lastIndex = input.lastIndexOf(ch);
-		return input.substring(firstIndex,lastIndex);
+		return input.substring(firstIndex, lastIndex);
 	}
 
 	public void fluentwait() {
@@ -127,7 +127,7 @@ public class testbase extends DriverFactory {
 			return false;
 		}
 	}
-	
+
 	public boolean ElementIs_inVisible(WebElement webElement, int time) {
 
 		try {
@@ -140,17 +140,17 @@ public class testbase extends DriverFactory {
 		}
 
 	}
-	
-	public static WebElement createWebElement(String elementText , int time) {
-	    WebElement element = null;
-	    try {
-	    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(time));
-	        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(elementText)));
-	        element = driver.findElement(By.xpath(elementText));
-	    } catch (Exception e) {
-	        System.out.println("Exception occurred: " + e);
-	    }
-	    return element;
+
+	public static WebElement createWebElement(String elementText, int time) {
+		WebElement element = null;
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(time));
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(elementText)));
+			element = driver.findElement(By.xpath(elementText));
+		} catch (Exception e) {
+			System.out.println("Exception occurred: " + e);
+		}
+		return element;
 	}
 
 	// isdisplay
@@ -243,8 +243,8 @@ public class testbase extends DriverFactory {
 			waitForWebElementIsVisible(element, 20);
 			if (element.isDisplayed())
 				((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoViewIfNeeded();", element);
-			    Thread.sleep(3000);
-				System.out.println("Element presend on screen ***********" + element);
+			Thread.sleep(3000);
+			System.out.println("Element presend on screen ***********" + element);
 			return true;
 		} catch (NoSuchElementException e) {
 			System.out.println("Element not present on screen **************" + element);
@@ -259,7 +259,7 @@ public class testbase extends DriverFactory {
 
 		try {
 			// JavascriptExecutor executor = (JavascriptExecutor) driver;
-			// executor.executeScript("arguments[0].click();", element);			
+			// executor.executeScript("arguments[0].click();", element);
 			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoViewIfNeeded();", element);
 			Thread.sleep(3000);
 			element.click();
@@ -342,7 +342,7 @@ public class testbase extends DriverFactory {
 	}
 
 	// switchToLatestWindow
-	String parentWindow;
+	public static String parentWindow;
 
 	public void switchToLatestWindow() throws InterruptedException {
 
@@ -354,6 +354,19 @@ public class testbase extends DriverFactory {
 				driver.switchTo().window(windowHandle);
 			}
 		}
+
+	}
+
+	public void switchToPartentWindow() {
+
+		// driver.close();
+		try {
+
+			driver.switchTo().window(parentWindow);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
 
 	String childwindow;
@@ -374,18 +387,6 @@ public class testbase extends DriverFactory {
 
 		String child2_window = driver.getWindowHandle();
 		System.out.println("Child 2 Window ID is : " + child2_window);
-	}
-
-	public void switchToPartentWindow() {
-
-		driver.close();
-		try {
-
-			driver.switchTo().window(parentWindow);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
 	}
 
 	public void switchToNextTab() {
@@ -630,7 +631,7 @@ public class testbase extends DriverFactory {
 			for (WebElement webElement : webElements) {
 
 				values.add(webElement.getText());
-				
+
 			}
 
 		} catch (Exception e) {
@@ -819,10 +820,10 @@ public class testbase extends DriverFactory {
 	public static void scrollToElement(WebElement element) {
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
 	}
-	
+
 	public void scroll_page(float to, float from) {
 		JavascriptExecutor jse6 = (JavascriptExecutor) driver;
-		jse6.executeScript("window.scrollBy("+to+","+from+")", "");
+		jse6.executeScript("window.scrollBy(" + to + "," + from + ")", "");
 	}
 
 	public void locateElement(List<WebElement> elementLocator) throws InterruptedException {

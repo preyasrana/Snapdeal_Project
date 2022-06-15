@@ -63,5 +63,25 @@ public class HomePage_Steps {
 		Assert.assertEquals(Expected_Message, homepage.barcode_snapdeal());
 
 	}
+	
+	@When("user click on login Section")
+	public void user_click_on_login_Section() {
+
+		homepage.clickon_loginbutton();
+	}
+	
+	@Then("user click on order section")
+	public void user_click_on_order_section() {
+
+		homepage.switchToparent();
+		homepage.verifyuser_login();
+		
+		if(homepage.display_user_login() == true) {
+			
+			homepage.clickon_withlogin_Orderlink();
+		}
+	}
+	
+	
 
 }

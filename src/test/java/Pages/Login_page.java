@@ -16,6 +16,14 @@ public class Login_page extends testbase {
 
 	@FindBy(id = "gplogin")
 	WebElement btn_gplogin;
+	
+	@FindBy(xpath = "//div[@class='login-register-common']//div[@class='social-button gmLogin rfloat col-xs-11'][@id='googleUserLogin']")
+	WebElement btn_home_gplogin;
+	
+	@FindBy(id = "loginIframe")
+	WebElement iframe_login;
+	
+	
 
 	@FindBy(xpath = "//input[@type='email']")
 	WebElement txt_gp_email;
@@ -77,7 +85,17 @@ public class Login_page extends testbase {
 		isClickable(btn_register_continue);
 	}
 
+	public void btn_home_gplogin() {
+		isClickable_javascript(btn_home_gplogin);
+	}
 
+	public void iframe_home_login() {
+		switchToFrame(iframe_login);
+	}
+	
+	public void back_iframe_home_login() {
+		switchToparent();
+	}
 	
 
 }

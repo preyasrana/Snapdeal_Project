@@ -29,6 +29,30 @@ public class Login_Steps {
 		login.btn_gmail_pwdnext();
 	
 		login.switchToNextTab();
+		//login.switchToPartentWindow();
+				
+	}
+	
+
+	
+	@Then("user redirect on Login popup")
+	public void user_redirect_on_Login_popup() throws InterruptedException {
+		
+		login.iframe_home_login();
+		login.btn_home_gplogin();
+		
+	}
+	
+	@Then("user logining via gmail")
+	public void user_login_through_gmail() throws InterruptedException {
+
+		login.switchToLatestWindow();		
+		login.enter_gmail_email(login.configreader.init_prop().getProperty("gmail_email"));
+		login.btn_gmail_emailnext();
+		login.enter_gmail_pwd(login.configreader.init_prop().getProperty("gmail_pwd"));
+		login.btn_gmail_pwdnext();
+	    Thread.sleep(5000);
+		login.switchToPartentWindow();
 				
 	}
 
