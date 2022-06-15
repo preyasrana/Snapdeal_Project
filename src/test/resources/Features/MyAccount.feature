@@ -8,3 +8,5 @@ Feature: Feature to Snapdeal HomePage functionality
     Then user redirect on Login popup
     Then user logining via gmail
     Then user click on order section
+
+    

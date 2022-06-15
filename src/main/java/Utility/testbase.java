@@ -19,9 +19,6 @@ import com.github.javafaker.Faker;
 
 import java.io.IOException;
 import java.net.URL;
-
-import org.testng.asserts.*;
-
 import factory.DriverFactory;
 
 import java.awt.AWTException;
