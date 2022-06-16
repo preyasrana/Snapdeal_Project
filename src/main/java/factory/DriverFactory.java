@@ -23,7 +23,7 @@ public class DriverFactory {
 			System.out.print("browser started !!");
 			System.setProperty("webdriver.chrome.driver",
 					System.getProperty("user.dir") + "/src/test/resources/Download/chromedriver");
-			System.setProperty("webdriver.chrome.verboseLogging", "true");
+			// System.setProperty("webdriver.chrome.verboseLogging", "true");
 			driver = new ChromeDriver();
 
 		} else if (browserName.equals("firefox")) {
@@ -32,14 +32,15 @@ public class DriverFactory {
 		} else if (browserName.equals("chrome_headless")) {
 			WebDriverManager.chromedriver().setup();
 			final ChromeOptions chromeOptions = new ChromeOptions();
-			chromeOptions.setBinary("/usr/bin/google-chrome-stable");
+			// chromeOptions.setBinary("/usr/bin/google-chrome-stable");
 
 			// chromeOptions.setHeadless(true);
 
 			chromeOptions.addArguments("--headless");
 			chromeOptions.addArguments("--single-process", "--no-sandbox", "--disable-dev-shm-usage");
-			
-			System.setProperty("webdriver.chrome.verboseLogging", "true");// chromeOptions.add_experimental_option("prefs",
+
+			// System.setProperty("webdriver.chrome.verboseLogging", "true");//
+			// chromeOptions.add_experimental_option("prefs",
 			// {"profile.managed_default_content_settings.images": 2})
 
 			// chromeOptions.addArguments("--no-sandbox");
