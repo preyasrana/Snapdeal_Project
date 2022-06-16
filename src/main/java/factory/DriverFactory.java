@@ -36,7 +36,7 @@ public class DriverFactory {
 			// chromeOptions.setHeadless(true);
 
 			chromeOptions.addArguments("--headless");
-			chromeOptions.addArguments("--no-sandbox", "--disable-dev-shm-usage");
+			chromeOptions.addArguments("--single-process","--no-sandbox", "--disable-dev-shm-usage");
 			// chromeOptions.add_experimental_option("prefs",
 			// {"profile.managed_default_content_settings.images": 2})
 
