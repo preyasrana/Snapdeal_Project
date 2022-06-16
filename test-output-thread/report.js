@@ -1,4 +1,4 @@
 $(document).ready(function() {
-CucumberHTML.timelineItems.pushArray([{"id":"2da77549-87a4-426a-8646-b9f63f12e08b","feature":"Feature to Snapdeal HomePage functionality","scenario":"Verification for Snapdeal ChangePassword funcationality","start":1655365888909,"group":1,"content":"","tags":"@feature,@smoke,","end":1655366308336,"className":"passed"}]);
+CucumberHTML.timelineItems.pushArray([{"id":"b97561d9-991a-4bfb-8a18-7b7ee387b5a7","feature":"Feature to Snapdeal HomePage functionality","scenario":"Verification for Snapdeal ChangePassword funcationality","start":1655367042678,"group":1,"content":"","tags":"@feature,@smoke,","end":1655367047508,"className":"failed"}]);
 CucumberHTML.timelineGroups.pushArray([{"id":1,"content":"Thread[main,5,main]"}]);
 });
