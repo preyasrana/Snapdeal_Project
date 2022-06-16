@@ -21,7 +21,8 @@ public class DriverFactory {
 			//WebDriverManager.chromedriver().setup();
 			System.out.print("browser started !!");
 			System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir") + "/src/test/resources/Download/chromedriver"); 
-		    driver=new ChromeDriver();  
+			System.setProperty("webdriver.chrome.verboseLogging", "true");
+			driver=new ChromeDriver();  
 
 		} else if (browserName.equals("firefox")) {
 			WebDriverManager.firefoxdriver().setup();
