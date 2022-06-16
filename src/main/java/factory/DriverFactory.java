@@ -18,8 +18,10 @@ public class DriverFactory {
 	public WebDriver init_driver(String browserName) {
 
 		if (browserName.equals("chrome")) {
-			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver();
+			//WebDriverManager.chromedriver().setup();
+			
+			System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir") + "/src/test/resources/Download/chromedriver"); 
+		    driver=new ChromeDriver();  
 
 		} else if (browserName.equals("firefox")) {
 			WebDriverManager.firefoxdriver().setup();
