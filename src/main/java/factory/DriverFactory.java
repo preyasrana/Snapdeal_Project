@@ -18,12 +18,13 @@ public class DriverFactory {
 	public WebDriver init_driver(String browserName) {
 
 		if (browserName.equals("chrome")) {
-			//WebDriverManager.chromedriver().setup();
+			// WebDriverManager.chromedriver().setup();
 
 			System.out.print("browser started !!");
-			System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir") + "/src/test/resources/Download/chromedriver"); 
+			System.setProperty("webdriver.chrome.driver",
+					System.getProperty("user.dir") + "/src/test/resources/Download/chromedriver");
 			System.setProperty("webdriver.chrome.verboseLogging", "true");
-			driver=new ChromeDriver();  
+			driver = new ChromeDriver();
 
 		} else if (browserName.equals("firefox")) {
 			WebDriverManager.firefoxdriver().setup();
@@ -31,12 +32,12 @@ public class DriverFactory {
 		} else if (browserName.equals("chrome_headless")) {
 			WebDriverManager.chromedriver().setup();
 			final ChromeOptions chromeOptions = new ChromeOptions();
-			// chromeOptions.setBinary("/usr/bin/google-chrome-stable");
+			chromeOptions.setBinary("/usr/bin/google-chrome-stable");
 
 			// chromeOptions.setHeadless(true);
 
 			chromeOptions.addArguments("--headless");
-			chromeOptions.addArguments("--single-process","--no-sandbox", "--disable-dev-shm-usage");
+			chromeOptions.addArguments("--single-process", "--no-sandbox", "--disable-dev-shm-usage");
 			// chromeOptions.add_experimental_option("prefs",
 			// {"profile.managed_default_content_settings.images": 2})
 
@@ -45,9 +46,9 @@ public class DriverFactory {
 
 			// chromeOptions.addArguments("--remote-debugging-port=9222");
 
-			// chromeOptions.addArguments("--disable-dev-shm-using");
+			chromeOptions.addArguments("--disable-dev-shm-using");
 			// chromeOptions.addArguments("--disable-extensions");
-			// chromeOptions.addArguments("--disable-gpu");
+			chromeOptions.addArguments("--disable-gpu");
 			chromeOptions.addArguments("start-maximized");
 			// chromeOptions.addArguments("disable-infobars");
 			// chromeOptions.addArguments("user-data-dir=.\cookies\\test");
