@@ -27,29 +27,29 @@ public class DriverFactory {
 		} else if (browserName.equals("chrome_headless")) {
 			WebDriverManager.chromedriver().setup();
 			final ChromeOptions chromeOptions = new ChromeOptions();
-			//chromeOptions.setBinary("/usr/bin/google-chrome-stable");
-			
-			
-			chromeOptions.setHeadless(true);
+			// chromeOptions.setBinary("/usr/bin/google-chrome-stable");
 
+			// chromeOptions.setHeadless(true);
+
+			chromeOptions.addArguments("--headless");
 			chromeOptions.addArguments("--no-sandbox", "--disable-dev-shm-usage");
 			// chromeOptions.add_experimental_option("prefs",
 			// {"profile.managed_default_content_settings.images": 2})
 
-			//chromeOptions.addArguments("--no-sandbox");
-			//chromeOptions.addArguments("--disable-setuid-sandbox");
+			// chromeOptions.addArguments("--no-sandbox");
+			// chromeOptions.addArguments("--disable-setuid-sandbox");
 
-			//chromeOptions.addArguments("--remote-debugging-port=9222");
+			// chromeOptions.addArguments("--remote-debugging-port=9222");
 
-			//chromeOptions.addArguments("--disable-dev-shm-using");
-			//chromeOptions.addArguments("--disable-extensions");
-			//chromeOptions.addArguments("--disable-gpu");
+			// chromeOptions.addArguments("--disable-dev-shm-using");
+			// chromeOptions.addArguments("--disable-extensions");
+			// chromeOptions.addArguments("--disable-gpu");
 			chromeOptions.addArguments("start-maximized");
-			//chromeOptions.addArguments("disable-infobars");
+			// chromeOptions.addArguments("disable-infobars");
 			// chromeOptions.addArguments("user-data-dir=.\cookies\\test");
 
 			driver = new ChromeDriver(chromeOptions);
-			
+
 		} else if (browserName.equals("firefox_headless")) {
 			WebDriverManager.firefoxdriver().setup();
 			FirefoxOptions firefoxOptions = new FirefoxOptions();
@@ -60,7 +60,7 @@ public class DriverFactory {
 		driver.manage().timeouts().pageLoadTimeout(testbase.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(testbase.IMPLICIT_WAIT, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
-		//driver.manage().deleteAllCookies();
+		// driver.manage().deleteAllCookies();
 		return driver;
 	}
 
