@@ -19,16 +19,8 @@ public class DriverFactory {
 
 		if (browserName.equals("chrome")) {
 			WebDriverManager.chromedriver().setup();
-			// driver = new ChromeDriver();
-
-			ChromeOptions options = new ChromeOptions();
-
-			options.addArguments("--disable-extensions");
-			// options.addArguments("--headless");
-			options.addArguments("--disable-gpu");
-			options.addArguments("--no-sandbox");
-			ChromeDriver driver = new ChromeDriver(options);
-
+		    driver = new ChromeDriver();
+			
 		} else if (browserName.equals("firefox")) {
 			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
