@@ -3,11 +3,7 @@ package StepDefinition;
 import java.io.IOException;
 
 import org.testng.Assert;
-import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
-
 import com.google.zxing.NotFoundException;
-
 import Pages.Home_page;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -18,8 +14,6 @@ public class HomePage_Steps {
 	Home_page homepage = new Home_page();
 	String Actual_message;
 	String Expected_Message;
-
-	SoftAssert soft = new SoftAssert();
 
 	@Given("user is on Home Page and verify page title")
 	public void Verify_home_page_title() throws InterruptedException {

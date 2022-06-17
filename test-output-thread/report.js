@@ -1,0 +1,4 @@
+$(document).ready(function() {
+CucumberHTML.timelineItems.pushArray([{"id":"3c1f30c0-e9d4-489c-acb7-79f1e66a786f","feature":"Feature to Snapdeal HomePage functionality","scenario":"Verify user should be redirect on changepassword page or not","start":1655442202328,"group":1,"content":"","tags":"@feature,@regression,","end":1655442236762,"className":"passed"},{"id":"4d7de59f-9df2-4376-a478-c5c5f4dfae59","feature":"Feature to Snapdeal HomePage functionality","scenario":"Verify Without entering changepassword user cant submit","start":1655442236789,"group":1,"content":"","tags":"@feature,@smoke,","end":1655442272017,"className":"passed"}]);
+CucumberHTML.timelineGroups.pushArray([{"id":1,"content":"Thread[main,5,main]"}]);
+});
