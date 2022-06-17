@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="2" time="69.983">
-    <testcase classname="Feature to Snapdeal HomePage functionality" name="Verify user should be redirect on changepassword page or not" time="34.433">
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="37.651">
+    <testcase classname="Feature to Snapdeal HomePage functionality" name="Verify valid newpassword functionality" time="37.338">
         <system-out>
             <![CDATA[Given user is on Home Page and verify page title............................passed
 When user click on login Section............................................passed
@@ -8,19 +8,8 @@ Then user redirect on Login popup...........................................pass
 Then user logining via gmail................................................passed
 Then user click on order section............................................passed
 Then user click on changepassword link......................................passed
-Then Verify Page Should be Redirect on changepassword page..................passed
-]]>
-        </system-out>
-    </testcase>
-    <testcase classname="Feature to Snapdeal HomePage functionality" name="Verify Without entering changepassword user cant submit" time="35.228">
-        <system-out>
-            <![CDATA[Given user is on Home Page and verify page title............................passed
-When user click on login Section............................................passed
-Then user redirect on Login popup...........................................passed
-Then user logining via gmail................................................passed
-Then user click on order section............................................passed
-Then user click on changepassword link......................................passed
-Then user click on submit button & Verify Error message.....................passed
+Then user enter "test123" & click on submit button..........................passed
+Then otp popup display & user enter otp.....................................passed
 ]]>
         </system-out>
     </testcase>

@@ -19,6 +19,11 @@ public class MyAccount_Profile_page extends testbase {
 
 	@FindBy(xpath = "//label[@id='newPassword-error']")
 	WebElement validation_msg_password;
+	
+	@FindBy(xpath = "//div[@class='sidebarin otp-screen']//input[@class='otpValueCode']")
+	WebElement txt_otpValueCode;
+	
+	
 
 	public MyAccount_Profile_page() {
 
@@ -41,7 +46,7 @@ public class MyAccount_Profile_page extends testbase {
 		clearValue(txt_newpassword);
 
 	}
-
+	
 	public void btn_changepassword_submit() {
 
 		isClickable(btn_changepassword_submit);
@@ -50,6 +55,16 @@ public class MyAccount_Profile_page extends testbase {
 
 	public String validation_msg_changepassword() {
 		return getText(validation_msg_password);
+	}
+	
+	public void enter_newpassword(String pwd) {
+		sendKeys(txt_newpassword, pwd);
+	}
+	
+	public boolean popup_otpbox() {
+
+		return isdisplay(txt_otpValueCode);
+
 	}
 
 }
