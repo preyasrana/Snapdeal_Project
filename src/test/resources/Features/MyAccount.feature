@@ -44,9 +44,9 @@ Feature: Feature to Snapdeal HomePage functionality
     Then user click on order section
     Then user click on changepassword link
     Then user enter "<validnewpassword>" & click on submit button
-    Then otp popup display & user enter otp
+    #  Then otp popup display & user enter otp
     
-
+    
     Examples: 
       | validnewpassword |
       | test123          |

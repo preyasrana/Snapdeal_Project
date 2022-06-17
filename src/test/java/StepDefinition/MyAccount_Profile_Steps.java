@@ -57,7 +57,7 @@ public class MyAccount_Profile_Steps {
 	public void user_has_enter_valid_new_password_in_search_box(String validnewpassword) throws InterruptedException {
 		
 		myaccount_profile.enter_newpassword(validnewpassword);
-		myaccount_profile.btn_changepassword_submit();
+		//myaccount_profile.btn_changepassword_submit();
 
 	}
 	
