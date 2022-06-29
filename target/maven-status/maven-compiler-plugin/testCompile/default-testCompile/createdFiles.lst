@@ -7,10 +7,11 @@ StepDefinition/Productlist_Steps.class
 StepDefinition/Cart_Steps.class
 Pages/Login_page.class
 StepDefinition/Productdetail_Steps.class
+StepDefinition/MyAccount_Profile_Steps.class
 StepDefinition/HomePage_Steps.class
 Pages/Productlist_page.class
 StepDefinition/Checkout_Steps.class
-Pages/MyAccount_Profile.class
+Pages/MyAccount_Profile_page.class
 StepDefinition/test.class
 StepDefinition/Login_Steps.class
 Pages/Checkout_page.class

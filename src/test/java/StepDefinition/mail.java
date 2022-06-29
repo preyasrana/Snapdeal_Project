@@ -1,5 +1,6 @@
 package StepDefinition;
 
+import java.text.DecimalFormat;
 import java.util.Properties;
 
 import javax.activation.DataHandler;
@@ -23,7 +24,7 @@ import Utility.testbase;
 
 public class mail extends testbase {
 
-	@Test
+	//@Test
 	public void mailsend() {
 
 		// Create object of Property file
@@ -109,6 +110,19 @@ public class mail extends testbase {
 		} catch (MessagingException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@Test
+	public void value() {
+		
+		double value = 200.30;
+		System.out.printf("Value: %.2f", value);
+		
+		
+		DecimalFormat df = new DecimalFormat("####0.00");
+		System.out.println("Value: " + df.format(value));
+	
+		
 	}
 
 }
